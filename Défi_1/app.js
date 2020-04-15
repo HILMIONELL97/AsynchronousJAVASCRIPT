@@ -1,14 +1,16 @@
-var xhr = new XMLHttpRequest();
+var request = new XMLHttpRequest();
 var button = document.getElementById("button");
 
-button.addEventListener("click", function() {
-    xhr.onload = function() {
-        if (xhr.status == 200) {
-            document.getElementById("output").innerHTML = xhr.responseText;
-        } else {
+button.addEventListener("click", loadData);
+
+function loadData() {
+    request.onload = function() {
+        if (request.readyState == 4 && request.status == 200) {
+            document.getElementById("output").innerHTML = request.responseText;
+        } else if (request.status = 404) {
             Console.log("ERROR 404");
         }
     };
-    xhr.open("get", "data.txt", true);
-    xhr.send();
-});
+    request.open("get", "data.txt");
+    request.send();
+}
