@@ -1,6 +1,5 @@
 var request = new XMLHttpRequest();
 var button = document.getElementById("button");
-
 button.addEventListener("click", loadData);
 
 function loadData() {
@@ -8,9 +7,10 @@ function loadData() {
         if (request.readyState == 4 && request.status == 200) {
             document.getElementById("output").innerHTML = request.responseText;
         } else if (request.status = 404) {
-            Console.log("ERROR 404");
+            console.log("ERROR 404");
         }
     };
-    request.open("get", "data.txt");
+    request.open('get', "data.txt")
     request.send();
+
 }
